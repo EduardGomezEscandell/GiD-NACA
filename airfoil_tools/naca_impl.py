@@ -92,10 +92,9 @@ class NACAFiveDigit(NACA):
     def _reflex_camber(self, x) -> float:
         r = self.r
         ratio = self.ratio
-        m = self.M
         if x < r:
-            return self.k1/6*((x - m)**3 - ratio*(1 - m)**3*x - m**3*x + m**3)
-        return self.k1/6*(ratio*(x - m)**3 - ratio*(1 - m)**3*x - m**3*x + m**3)
+            return self.k1/6*((x - r)**3 - ratio*(1 - r)**3*x - r**3*x + r**3)
+        return self.k1/6*(ratio*(x - r)**3 - ratio*(1 - r)**3*x - r**3*x + r**3)
 
     def _standard_gradient(self, x) -> float:
         r = self.r
