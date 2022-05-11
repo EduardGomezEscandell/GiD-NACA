@@ -83,10 +83,6 @@ class NACAFiveDigit(NACA):
             self.k1 = [0.0, 0.0, 51.990, 15.793, 6.520, 3.191][self.P]
             self.ratio = (3*(self.M - self.r)**2 - self.M**3) / (1 - self.M)**3
 
-            print(self.M)
-            print(self.k1)
-            print(self.ratio)
-
     def _standard_camber(self, x) -> float:
         r = self.r
         if x < r:
