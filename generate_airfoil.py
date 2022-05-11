@@ -1,12 +1,17 @@
+#!/usr/bin/env python3
+
 from airfoil_tools.naca_generator import generate_naca
 from gid_tools.gid_geometry import Gid2DGeometry
 from gid_tools.external_boundary import generate_boundary
 
 # Data entry
-naca_digits = "0012"
-file_name = "naca0012.bch"
+naca_digits = "4412"
 npoints = 100
-shell_radius = 10
+
+boundary_type = "lens"
+boundary_radius = 10
+
+file_name = "naca.bch"
 
 # Geometrty generation
 geometry = Gid2DGeometry()
@@ -21,7 +26,7 @@ with geometry.new_1d_shape('polygon') as p:
         p.new_point(point)
 
 # Outter boundary
-generate_boundary("lens", geometry, shell_radius)
+generate_boundary(boundary_type, geometry, boundary_radius)
 
 # Fluid domain
 s = geometry.new_2d_shape()
