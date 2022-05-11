@@ -7,9 +7,10 @@ def generate_boundary(type: str, geometry: Gid2DGeometry, *params) -> None:
         "lens": _generate_lens_boundary,
     }
 
-    if type not in available:
-        raise KeyError(f"Unknown boundary type: {type}. Try any of {list(available.keys())}")
-    return available[type](geometry, *params)
+    try:
+        return available[type.lower()](geometry, *params)
+    except KeyError as e:
+        raise KeyError(f"Unknown boundary type: {type}. Try any of {list(available.keys())}") from e
 
 def _generate_bullet_boundary(geometry: Gid2DGeometry, radius: float):
     # Cuved inlet
