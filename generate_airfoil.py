@@ -6,13 +6,13 @@ from gid_tools.gid_geometry import Gid2DGeometry
 from gid_tools.external_boundary import generate_boundary
 
 # Data entry
-naca_digits = "2412"
-npoints = 100
+naca_digits = "2412"        # The airfoil to generate
+npoints = 100               # Number of points in each surface of the airfoil
 
-boundary_type = "lens"
-boundary_radius = 10
+boundary_type = "lens"      # The type of fluid domain. Use "none" to generate only the airfoil
+boundary_radius = 10        # The size of the fluid domain
 
-file_name = "naca.bch"
+file_name = "naca.bch"      # The file to store the domain in
 
 # Geometrty generation
 geometry = Gid2DGeometry()
