@@ -25,4 +25,4 @@ def generate_naca(naca_code, npoints):
         upper_surf[i, :] = airfoil.upper_surface(x, y, yt, theta)
         lower_surf[i, :] = airfoil.lower_surface(x, y, yt, theta)
 
-    return camber, upper_surf, lower_surf
+    return camber, upper_surf, lower_surf, theta

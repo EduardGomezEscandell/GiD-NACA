@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
+import numpy as np
 
 from airfoil_tools.naca_generator import generate_naca
 from gid_tools.gid_geometry import Gid2DGeometry
 from gid_tools.external_boundary import generate_boundary
 
 # Data entry
-naca_digits = "4412"
+naca_digits = "2412"
 npoints = 100
 
 boundary_type = "lens"
@@ -17,7 +18,7 @@ file_name = "naca.bch"
 geometry = Gid2DGeometry()
 
 # Airfoil
-_, upper, lower = generate_naca(naca_digits, npoints)
+_, upper, lower, trailing_edge_angle = generate_naca(naca_digits, npoints)
 
 with geometry.new_1d_shape('polygon') as p:
     for point in upper[:,:]:
@@ -35,3 +36,7 @@ for line in geometry.lines:
 
 # GiD batch file
 geometry.write(file_name)
+
+# Useful info for enforcing free-slip condition
+print(f"Trailing edge cord angle is {trailing_edge_angle} rad")
+print(f"Trailing edge cord vector is [{np.cos(trailing_edge_angle)}, {np.sin(trailing_edge_angle)}]")
