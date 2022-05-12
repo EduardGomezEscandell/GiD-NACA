@@ -13,7 +13,7 @@ def generate_boundary(type: str, geometry: Gid2DGeometry, *params) -> None:
         raise KeyError(f"Unknown boundary type: {type}. Try any of {list(available.keys())}") from e
 
 def _generate_bullet_boundary(geometry: Gid2DGeometry, radius: float):
-    # Cuved inlet
+    # Curved inlet
     sc = geometry.new_1d_shape('semicircle')
     top_center = sc.new_point([0, radius])
     sc.new_point([-radius, 0])
@@ -31,13 +31,13 @@ def _generate_lens_boundary(geometry: Gid2DGeometry, vertical_radius: float, hor
     if horzontal_radius is None:
         horzontal_radius = 0.5 * vertical_radius
 
-    # Cuved inlet
+    # Curved inlet
     left = geometry.new_1d_shape('semicircle')
     top = left.new_point([0, vertical_radius])
     left.new_point([-horzontal_radius, 0])
     bot = left.new_point([0, -vertical_radius])
 
-    # Cuved outlet
+    # Curved outlet
     right = geometry.new_1d_shape('semicircle')
     right.add_point(bot)
     right.new_point([horzontal_radius, 0])
