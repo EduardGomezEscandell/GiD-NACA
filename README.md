@@ -5,8 +5,8 @@ This repository contains scripts to generate NACA airfoils in a format easy to i
 In order to generate the airfoil, run file `generate_airfoil.py`. To choose the settings, open the file
 and you can edit:
 - Which NACA 4-digit or 5-digit airfoil you want to generate
-- How many points do you want in each surface
-- The shape of the boundary and its size
+- How many points you want in each surface
+- The shape of the fluid domain and its size
 - The output filename
 
 To open from GiD, use `Files > Import > Batch File` and select the file you generated. You can also use `Ctrl+b`.
