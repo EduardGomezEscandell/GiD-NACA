@@ -5,6 +5,7 @@ def generate_boundary(type: str, geometry: Gid2DGeometry, *params) -> None:
     available = {
         "bullet": _generate_bullet_boundary,
         "lens": _generate_lens_boundary,
+        "rectangle": _generate_rectangle_boundary,
         "none": lambda *_: None,
     }
 
@@ -13,7 +14,7 @@ def generate_boundary(type: str, geometry: Gid2DGeometry, *params) -> None:
     except KeyError as e:
         raise KeyError(f"Unknown boundary type: {type}. Try any of {list(available.keys())}") from e
 
-def _generate_bullet_boundary(geometry: Gid2DGeometry, radius: float):
+def _generate_bullet_boundary(geometry: Gid2DGeometry, radius: float) -> None:
     # Curved inlet
     sc = geometry.new_1d_shape('semicircle')
     top_center = sc.new_point([0, radius])
@@ -28,20 +29,32 @@ def _generate_bullet_boundary(geometry: Gid2DGeometry, radius: float):
     geometry.new_1d_shape('line', bot_right, top_right)
     geometry.new_1d_shape('line', top_right, top_center)
 
-def _generate_lens_boundary(geometry: Gid2DGeometry, vertical_radius: float, horzontal_radius: float = None):
-    if horzontal_radius is None:
-        horzontal_radius = 0.5 * vertical_radius
+def _generate_lens_boundary(geometry: Gid2DGeometry, height: float, width: float = None) -> None:
+    if width is None:
+        width = 0.5 * height
 
     # Curved inlet
     left = geometry.new_1d_shape('semicircle')
-    top = left.new_point([0, vertical_radius])
-    left.new_point([-horzontal_radius, 0])
-    bot = left.new_point([0, -vertical_radius])
+    top = left.new_point([0, height])
+    left.new_point([-width, 0])
+    bot = left.new_point([0, -height])
 
     # Curved outlet
     right = geometry.new_1d_shape('semicircle')
     right.add_point(bot)
-    right.new_point([horzontal_radius, 0])
+    right.new_point([width, 0])
     right.add_point(top)
+
+def _generate_rectangle_boundary(geometry: Gid2DGeometry, width: float, height: float = None) -> None:
+    if height is None:
+        height = width
+
+    with geometry.new_1d_shape('polygon') as p:
+        p.new_point([-width, -height])
+        p.new_point([ width, -height])
+        p.new_point([ width,  height])
+        p.new_point([-width,  height])
+
+
 
 
