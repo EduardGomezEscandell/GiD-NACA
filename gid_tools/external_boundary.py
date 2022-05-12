@@ -5,6 +5,7 @@ def generate_boundary(type: str, geometry: Gid2DGeometry, *params) -> None:
     available = {
         "bullet": _generate_bullet_boundary,
         "lens": _generate_lens_boundary,
+        "none": lambda *_: None,
     }
 
     try:
