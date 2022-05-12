@@ -30,9 +30,10 @@ with geometry.new_1d_shape('polygon') as p:
 generate_boundary(boundary_type, geometry, boundary_radius)
 
 # Fluid domain
-s = geometry.new_2d_shape()
-for line in geometry.lines:
-    s.add_line(line.id)
+if boundary_type.lower() != "none":
+    s = geometry.new_2d_shape()
+    for line in geometry.lines:
+        s.add_line(line.id)
 
 # GiD batch file
 geometry.write(file_name)
