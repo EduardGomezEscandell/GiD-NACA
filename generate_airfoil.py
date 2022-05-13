@@ -36,7 +36,7 @@ if boundary_type.lower() != "none":
         s.add_line(line.id)
 
 # GiD batch file
-geometry.write(file_name)
+geometry.write(file_name, comment=f"NACA {naca_digits}")
 
 # Useful info for enforcing free-slip condition
 print(f"Trailing edge cord angle is {trailing_edge_angle} rad")
