@@ -14,7 +14,7 @@ boundary_radius = 10        # The size of the fluid domain
 
 file_name = "naca.bch"      # The file to store the domain in
 
-# Geometrty generation
+# Geometry generation
 geometry = Gid2DGeometry()
 
 # Airfoil
