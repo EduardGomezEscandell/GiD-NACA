@@ -10,4 +10,4 @@ class NurbsSurface:
     def gid_command(self):
         s = "Geometry Create NurbsSurface "
         s += " ".join(str(p) for p in self.lines)
-        return s + " Escape Escape Escape\n"
+        return s + " Mescape\n"

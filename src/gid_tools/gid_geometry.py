@@ -39,7 +39,7 @@ class Gid2DGeometry:
 
             # Printing geometry
             for point in self.points:
-                f.write("Geometry Create Point {} {} 0.0 Escape Escape Escape\n".format(*point))
+                f.write("Geometry Create Point {} {} 0.0 Mescape\n".format(*point))
             for line in self.lines:
                 f.write(line.gid_command())
             for surf in self.surfaces:

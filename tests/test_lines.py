@@ -46,7 +46,7 @@ class TestAirfoil (unittest.TestCase):
         self.assertEqual(geometry.points[1][0], 2)
         self.assertEqual(geometry.points[1][1], 3)
 
-        self.assertEqual(line.gid_command(), "Geometry Create Line join 1 2 nojoin Escape Escape Escape\n")
+        self.assertEqual(line.gid_command(), "Geometry Create Line join 1 2 nojoin Mescape\n")
 
     def test_semicircle(self):
         geometry = self._DummyGeometry()
@@ -65,7 +65,7 @@ class TestAirfoil (unittest.TestCase):
         self.assertEqual(geometry.points[2][0], 1)
         self.assertEqual(geometry.points[2][1], 0)
 
-        self.assertEqual(semicircle.gid_command(), "Geometry Create Arc join 1 2 3 nojoin Escape Escape Escape\n")
+        self.assertEqual(semicircle.gid_command(), "Geometry Create Arc join 1 2 3 nojoin Mescape\n")
 
     def test_polygon(self):
         geometry = self._DummyGeometry()
@@ -95,13 +95,13 @@ class TestAirfoil (unittest.TestCase):
         self.assertEqual(geometry.points[4][1], 6)
 
         self.assertEqual(geometry.lines[0].gid_command(),
-                         "Geometry Create Line join 1 2 nojoin Escape Escape Escape\n")
+                         "Geometry Create Line join 1 2 nojoin Mescape\n")
         self.assertEqual(geometry.lines[1].gid_command(),
-                         "Geometry Create Line join 2 3 nojoin Escape Escape Escape\n")
+                         "Geometry Create Line join 2 3 nojoin Mescape\n")
         self.assertEqual(geometry.lines[2].gid_command(),
-                         "Geometry Create Line join 3 5 nojoin Escape Escape Escape\n")
+                         "Geometry Create Line join 3 5 nojoin Mescape\n")
         self.assertEqual(geometry.lines[3].gid_command(),
-                         "Geometry Create Line join 5 1 nojoin Escape Escape Escape\n")
+                         "Geometry Create Line join 5 1 nojoin Mescape\n")
 
 
 

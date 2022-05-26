@@ -52,7 +52,7 @@ class Line(Shape1D):
             print(f"WARNING: Attempting to create a Line with too few control points (has: {len(self.points)}, needs: 2).")
             return ""
         else:
-            return "Geometry Create Line join {} {} nojoin Escape Escape Escape\n".format(*self.points)
+            return "Geometry Create Line join {} {} nojoin Mescape\n".format(*self.points)
 
 
 class Semicircle(Shape1D):
@@ -71,7 +71,7 @@ class Semicircle(Shape1D):
             print(f"WARNING: Attempting to create a semicircle with too few control points (has: {len(self.points)}, needs: 3).")
             return ""
         else:
-            return "Geometry Create Arc join {} {} {} nojoin Escape Escape Escape\n".format(*self.points)
+            return "Geometry Create Arc join {} {} {} nojoin Mescape\n".format(*self.points)
 
 
 class Polygon(Shape1D):
