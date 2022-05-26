@@ -2,7 +2,7 @@
 This repository contains scripts to generate NACA airfoils in a format easy to import to [GiD](https://www.gidsimulation.com/) pre- and post-processing software.
 
 ## How to use
-In order to generate the airfoil, run file `generate_airfoil.py`. To choose the settings, open the file
+In order to generate the airfoil, run file `sample.py`. To choose the settings, open the file
 and you can edit:
 - Which NACA 4-digit or 5-digit airfoil you want to generate
 - How many points you want in each surface
