@@ -1,5 +1,5 @@
 # GiD NACA generator
-This repository contains scripts to generate NACA airfoils in a format easy to import to [GiD](https://www.gidsimulation.com/) pre- and post-processing software.
+This repository contains scripts to generate 2D NACA airfoils in a format easy to import to [GiD](https://www.gidsimulation.com/) pre- and post-processing software.
 
 ## How to use
 In order to generate the airfoil, run file `sample.py`. To choose the settings, open the file
