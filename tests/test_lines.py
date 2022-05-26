@@ -50,22 +50,23 @@ class TestAirfoil (unittest.TestCase):
 
     def test_semicircle(self):
         geometry = self._DummyGeometry()
+        geometry.new_point([7, 0])
 
         semicircle = lines.LineFactory(geometry, "semicircle")
         semicircle.new_point([-1, 0])
         semicircle.new_point([0, 1])
         semicircle.new_point([1, 0])
 
-        self.assertEqual(geometry.points[0][0], -1)
-        self.assertEqual(geometry.points[0][1], 0)
+        self.assertEqual(geometry.points[1][0], -1)
+        self.assertEqual(geometry.points[1][1], 0)
 
-        self.assertEqual(geometry.points[1][0], 0)
-        self.assertEqual(geometry.points[1][1], 1)
+        self.assertEqual(geometry.points[2][0], 0)
+        self.assertEqual(geometry.points[2][1], 1)
 
-        self.assertEqual(geometry.points[2][0], 1)
-        self.assertEqual(geometry.points[2][1], 0)
+        self.assertEqual(geometry.points[3][0], 1)
+        self.assertEqual(geometry.points[3][1], 0)
 
-        self.assertEqual(semicircle.gid_command(), "Geometry Create Arc join 1 2 3 nojoin Mescape\n")
+        self.assertEqual(semicircle.gid_command(), "Geometry Create Arc join 2 3 4 nojoin Mescape\n")
 
     def test_polygon(self):
         geometry = self._DummyGeometry()
@@ -75,7 +76,7 @@ class TestAirfoil (unittest.TestCase):
             polygon.new_point([1, 1])   # 2
             polygon.new_point([5, 5])   # 3
 
-            geometry.new_point([7, 0])  # 4
+            geometry.new_point([7, 0])  # 4 -- Not in polygon
 
             polygon.new_point([6, 6])   # 5
 
