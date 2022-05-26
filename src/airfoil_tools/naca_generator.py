@@ -1,6 +1,6 @@
 import numpy as np
 
-from airfoil_tools.naca_impl import NACAFactory
+from src.airfoil_tools.naca_impl import NACAFactory
 
 def generate_naca(naca_code, npoints):
     # Reading name
