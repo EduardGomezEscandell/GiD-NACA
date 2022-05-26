@@ -79,10 +79,10 @@ class Polygon(Shape1D):
     def __init__(self, parent):
         super().__init__(parent, False)
         self.points = []
-        self.closed = False
+        self.__closed = False
 
     def add_point(self, id_: int) -> int:
-        if self.closed:
+        if self.__closed:
             raise RuntimeError("Polygon is already closed")
         self.points.append(id_)
         if len(self.points) > 1:
@@ -90,14 +90,14 @@ class Polygon(Shape1D):
         return id_
 
     def close(self):
-        if self.closed:
+        if self.__closed:
             return
 
         if len(self.points) < 3:
             raise RuntimeError("Polygon must have at least 3 points")
 
         self.parent.new_1d_shape('line', self.points[-1], self.points[0])
-        self.closed = True
+        self.__closed = True
 
     def __enter__(self):
         return self
@@ -106,5 +106,5 @@ class Polygon(Shape1D):
         self.close()
 
     def __del__(self):
-        if not self.closed:
+        if not self.__closed:
             print("WARNING: Polygon object deleted without closing.")
