@@ -1,8 +1,8 @@
 import numpy as np
 from datetime import datetime
 
-from gid_tools.lines import LineFactory, Polygon, Shape1D
-from gid_tools.surfaces import NurbsSurface
+from src.gid_tools.lines import LineFactory, Polygon, Shape1D
+from src.gid_tools.surfaces import NurbsSurface
 
 class Gid2DGeometry:
     def __init__(self):

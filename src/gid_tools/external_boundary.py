@@ -1,5 +1,5 @@
 import numpy as np
-from gid_tools.gid_geometry import Gid2DGeometry
+from src.gid_tools.gid_geometry import Gid2DGeometry
 
 def generate_boundary(type: str, geometry: Gid2DGeometry, *params) -> None:
     available = {
